@@ -4,7 +4,7 @@ import (
 	"errors"
 	"reflect"
 
-	"gopkg.in/labstack/echo.v1"
+	"gopkg.in/labstack/echo.v3"
 )
 
 // fieldTagKey is the field tag key for ripple
@@ -40,7 +40,6 @@ func Group(c Controller, echoMux *echo.Echo) *echo.Group {
 
 		res.Set(grp)
 	}
-
 	return grp
 }
 
