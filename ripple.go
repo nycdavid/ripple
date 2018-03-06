@@ -28,7 +28,7 @@ func Group(c Controller, echoMux *echo.Echo) *echo.Group {
 	grp := echoMux.Group(c.Path())
 
 	i := 0
-	n := ctyp.NumField()
+	n := ctyp.NumField() // returns the number of fields
 	for ; i < n; i++ {
 		res, err := newResource(ctyp.Field(i), cvof)
 		if err != nil {
@@ -43,6 +43,9 @@ func Group(c Controller, echoMux *echo.Echo) *echo.Group {
 	return grp
 }
 
+// reflectCtrl is passed a user-defined controller object
+// it reflects through it in order to find the name of the type that was
+// declared in the user's code, going through pointers if necessary
 func reflectCtrl(c Controller) (reflect.Value, reflect.Type, error) {
 	vof := reflect.ValueOf(c)
 	typ := vof.Type()
