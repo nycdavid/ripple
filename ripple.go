@@ -28,7 +28,7 @@ func Group(c Controller, echoMux *echo.Echo) *echo.Group {
 	grp := echoMux.Group(c.Path())
 
 	i := 0
-	n := ctyp.NumField() // returns the number of fields
+	n := ctyp.NumField() // returns the number of controller actions declared
 	for ; i < n; i++ {
 		res, err := newResource(ctyp.Field(i), cvof)
 		if err != nil {

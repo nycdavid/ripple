@@ -48,7 +48,6 @@ func (CtrlBasic) DelFunc(c echo.Context) error {
 
 func TestAppliesMethodsToNewEchoGroupUsingTagsAsManifest(t *testing.T) {
 	httptest.NewRecorder()
-	fmt.Println("Starting test")
 	echoMux := echo.New()
 	Group(&CtrlBasic{Namespace: ""}, echoMux)
 	//
