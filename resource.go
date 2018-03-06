@@ -55,7 +55,7 @@ func (r resource) callName() string {
 // Set sets the resources on the given group
 func (r resource) Set(grp *echo.Group) {
 	upcasedVerb := strings.ToUpper(r.callName())
-	fmt.Println(r.callArgs())
+	// can we use echo.WrapHandler?
 	reflect.
 		ValueOf(grp).
 		MethodByName(upcasedVerb).
@@ -66,8 +66,6 @@ func (r resource) callArgs() []reflect.Value {
 	if r.isMiddleware() {
 		return []reflect.Value{r.Func}
 	}
-	fmt.Println("path")
-	fmt.Println(r.Path)
 	return []reflect.Value{
 		reflect.ValueOf(r.Path),
 		r.Func,
